@@ -1,3 +1,5 @@
+package com.mycompany.loggin_arellano;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -30,10 +32,9 @@ public class Front extends javax.swing.JFrame {
         NombreUsuario = new javax.swing.JTextField();
         Contraseña = new javax.swing.JPasswordField();
         Registrar = new javax.swing.JLabel();
-        Login_Foto1 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
-        Login_Foto = new javax.swing.JLabel();
         LabelRegistrar = new javax.swing.JLabel();
+        Login_Foto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,7 +68,6 @@ public class Front extends javax.swing.JFrame {
         Registrar.setForeground(new java.awt.Color(255, 255, 255));
         Registrar.setText("¿No tienes Cuenta? Registrate aquí");
         getContentPane().add(Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 230, -1));
-        getContentPane().add(Login_Foto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         btnLogin.setBorder(null);
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -75,13 +75,13 @@ public class Front extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 250, 30));
-
-        Login_Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login.jpg"))); // NOI18N
-        getContentPane().add(Login_Foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 260, 30));
 
         LabelRegistrar.setText("jLabel1");
         getContentPane().add(LabelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 110, 20));
+
+        Login_Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/loggin_arellano/login.jpg"))); // NOI18N
+        getContentPane().add(Login_Foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -168,7 +168,6 @@ public class Front extends javax.swing.JFrame {
     private javax.swing.JPasswordField Contraseña;
     private javax.swing.JLabel LabelRegistrar;
     private javax.swing.JLabel Login_Foto;
-    private javax.swing.JLabel Login_Foto1;
     private javax.swing.JTextField NombreUsuario;
     private javax.swing.JLabel Registrar;
     private javax.swing.JButton btnLogin;
