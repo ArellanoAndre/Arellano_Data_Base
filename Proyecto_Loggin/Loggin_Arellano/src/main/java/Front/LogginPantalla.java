@@ -1,23 +1,33 @@
-package com.mycompany.loggin_arellano;
+package Front;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+import Back.Backend;
+import Back.Usuario;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Arell
  */
-public class Front extends javax.swing.JFrame {
+public class LogginPantalla extends javax.swing.JFrame {
+    public  Backend back = new Backend();
 
     /**
      * Creates new form Front
      */
-    public Front() {
+    public LogginPantalla() {
         initComponents();
+        this.setTitle("Ingrese Nombre y Contraseña....");
         this.setResizable(false); // Evita que la ventana se pueda redimensionar
-
+//          // Cargar la imagen desde el classpath
+//    URL imgURL = getClass().getResource("/com/mycompany/loggin_arellano/login.jpg");
+//    if (imgURL != null) {
+//        ImageIcon icono = new ImageIcon(imgURL);
+//        Login_Foto.setIcon(icono); // Suponiendo que tienes un JLabel para mostrarla
+//    } else {
+//        System.err.println("⚠️ Imagen no encontrada: /com/mycompany/loggin_arellano/login.jpg");
+//    }
     }
 
     /**
@@ -32,9 +42,8 @@ public class Front extends javax.swing.JFrame {
         NombreUsuario = new javax.swing.JTextField();
         Contraseña = new javax.swing.JPasswordField();
         Registrar = new javax.swing.JLabel();
-        btnLogin = new javax.swing.JButton();
-        LabelRegistrar = new javax.swing.JLabel();
         Login_Foto = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,7 +78,15 @@ public class Front extends javax.swing.JFrame {
         Registrar.setText("¿No tienes Cuenta? Registrate aquí");
         getContentPane().add(Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 230, -1));
 
+        Login_Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/login.jpg"))); // NOI18N
+        getContentPane().add(Login_Foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 480));
+
         btnLogin.setBorder(null);
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLoginMouseClicked(evt);
+            }
+        });
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -77,13 +94,8 @@ public class Front extends javax.swing.JFrame {
         });
         getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 260, 30));
 
-        LabelRegistrar.setText("jLabel1");
-        getContentPane().add(LabelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 110, 20));
-
-        Login_Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/loggin_arellano/login.jpg"))); // NOI18N
-        getContentPane().add(Login_Foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 480));
-
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreUsuarioActionPerformed
@@ -106,28 +118,38 @@ public class Front extends javax.swing.JFrame {
     }//GEN-LAST:event_ContraseñaActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-//
-//        if (NombreUsuario.getText().isEmpty() || Contraseña.getText().isEmpty()) {
+//  if (NombreUsuario.getText().isEmpty() || Contraseña.getText().isEmpty()) {
 //            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Alerta", JOptionPane.WARNING_MESSAGE);
 //        } else {
-//            long id = Consulta.obtenerIDusuario(NombreUsuario.getText(), Contraseña.getText());
-//            if (id != 0) {
-//                System.out.println("mandando usuario");
-//                DlgConsultas v = new DlgConsultas(id);
-//                System.out.println(id);
-//                // v.idUsuarioRecibido=id;
-//                //JOptionPane.showMessageDialog(this, "Usuario registrado con éxito,regrese para iniciar sesion", "", JOptionPane.INFORMATION_MESSAGE);
-//
-//                v.setVisible(true);
-//                dispose();
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Este usuario No existe", "aviso", JOptionPane.INFORMATION_MESSAGE);
-//                NombreUsuario.setText("");
-//                Contraseña.setText("");
+//            Usuario usuario = new Usuario(NombreUsuario.getText(), Contraseña.getText());
+//            int id = back.Loggin(usuario);
+//            if(id > 0)
+//            {Menu menu = new Menu();
+//            menu.setVisible(true);
+//            this.dispose();
 //            }
 //        }
+//        System.out.println("Aceptar!!");
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
+       if (NombreUsuario.getText().isEmpty() || Contraseña.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Usuario usuario = new Usuario(NombreUsuario.getText(), Contraseña.getText());
+            int id = back.Loggin(usuario);
+            if(id > 0)
+            {Menu menu = new Menu();
+            menu.setVisible(true);
+            this.dispose();
+            }
+            else
+               JOptionPane.showMessageDialog(this, "Incorrecto!! Por favor, Intente de nuevo", "Alerta", JOptionPane.WARNING_MESSAGE);
+
+        }
+               System.out.println("Iteracion Metodo Loggin!!");
+
+    }//GEN-LAST:event_btnLoginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -146,27 +168,27 @@ public class Front extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Front.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogginPantalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Front.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogginPantalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Front.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogginPantalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Front.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogginPantalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Front().setVisible(true);
+                new LogginPantalla().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Contraseña;
-    private javax.swing.JLabel LabelRegistrar;
     private javax.swing.JLabel Login_Foto;
     private javax.swing.JTextField NombreUsuario;
     private javax.swing.JLabel Registrar;
