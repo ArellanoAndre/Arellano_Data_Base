@@ -16,9 +16,10 @@ public class Main {
         System.out.println("Hello World!");
         Backend back = new Backend();
         LogginPantalla loggin = new LogginPantalla();
+        loggin.setVisible(true);
      //   Usuario usuario = new Usuario("Santiago", "123");
       // back.crearUsuario(usuario);
        // System.out.println(back.Loggin(usuario));
-       loggin.setVisible(true);
+       
     }
 }
