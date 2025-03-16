@@ -39,14 +39,21 @@ public class LogginPantalla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btninicio = new javax.swing.JLabel();
         NombreUsuario = new javax.swing.JTextField();
         Contraseña = new javax.swing.JPasswordField();
         Registrar = new javax.swing.JLabel();
         Login_Foto = new javax.swing.JLabel();
-        btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btninicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btninicioMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btninicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 260, 40));
 
         NombreUsuario.setBackground(new java.awt.Color(71, 100, 104));
         NombreUsuario.setFont(new java.awt.Font("Segoe UI Black", 2, 24)); // NOI18N
@@ -86,19 +93,6 @@ public class LogginPantalla extends javax.swing.JFrame {
         Login_Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/login.jpg"))); // NOI18N
         getContentPane().add(Login_Foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 480));
 
-        btnLogin.setBorder(null);
-        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLoginMouseClicked(evt);
-            }
-        });
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 260, 30));
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -122,23 +116,13 @@ public class LogginPantalla extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ContraseñaActionPerformed
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-//  if (NombreUsuario.getText().isEmpty() || Contraseña.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Alerta", JOptionPane.WARNING_MESSAGE);
-//        } else {
-//            Usuario usuario = new Usuario(NombreUsuario.getText(), Contraseña.getText());
-//            int id = back.Loggin(usuario);
-//            if(id > 0)
-//            {Menu menu = new Menu();
-//            menu.setVisible(true);
-//            this.dispose();
-//            }
-//        }
-//        System.out.println("Aceptar!!");
-    }//GEN-LAST:event_btnLoginActionPerformed
+    private void RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarMouseClicked
+        UsuarioNuevo UN = new UsuarioNuevo();
+        UN.setVisible(true);
+    }//GEN-LAST:event_RegistrarMouseClicked
 
-    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-       if (NombreUsuario.getText().isEmpty() || Contraseña.getText().isEmpty()) {
+    private void btninicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btninicioMouseClicked
+                     if (NombreUsuario.getText().isEmpty() || Contraseña.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Alerta", JOptionPane.WARNING_MESSAGE);
         } else {
             Usuario usuario = new Usuario(NombreUsuario.getText(), Contraseña.getText());
@@ -154,12 +138,7 @@ public class LogginPantalla extends javax.swing.JFrame {
         }
                System.out.println("Iteracion Metodo Loggin!!");
 
-    }//GEN-LAST:event_btnLoginMouseClicked
-
-    private void RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarMouseClicked
-        UsuarioNuevo UN = new UsuarioNuevo();
-        UN.setVisible(true);
-    }//GEN-LAST:event_RegistrarMouseClicked
+    }//GEN-LAST:event_btninicioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -202,6 +181,6 @@ public class LogginPantalla extends javax.swing.JFrame {
     private javax.swing.JLabel Login_Foto;
     private javax.swing.JTextField NombreUsuario;
     private javax.swing.JLabel Registrar;
-    private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel btninicio;
     // End of variables declaration//GEN-END:variables
 }

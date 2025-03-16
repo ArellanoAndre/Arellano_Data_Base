@@ -162,6 +162,7 @@ public class UsuarioNuevo extends javax.swing.JFrame {
     back.crearUsuario(usuario);
     LogginPantalla loggin = new LogginPantalla();
     loggin.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_agregarActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
