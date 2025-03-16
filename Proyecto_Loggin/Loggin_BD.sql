@@ -3,14 +3,15 @@ USE loggin;
 CREATE TABLE IF NOT EXISTS USUARIO(
 ID INT auto_increment primary key,
 NOMBRE VARCHAR(15),
-CONTRASEÑA VARCHAR(20)
+CONTRASEÑA VARCHAR(255)
 );
+drop TABLE USUARIO;
 # ------  SP ---------------
 #--- CREAR
 DELIMITER //
 CREATE PROCEDURE sp_CrearUsuario(
     IN p_Nombre VARCHAR(15),
-    IN p_Contraseña VARCHAR(20)
+    IN p_Contraseña VARCHAR(255)
 )
 BEGIN
     INSERT INTO USUARIO (NOMBRE, CONTRASEÑA) VALUES (p_Nombre, p_Contraseña);
@@ -31,7 +32,7 @@ DELIMITER //
 CREATE PROCEDURE sp_ActualizarUsuario(
     IN p_ID INT,
     IN p_Nombre VARCHAR(15),
-    IN p_Contraseña VARCHAR(20)
+    IN p_Contraseña VARCHAR(255)
 )
 BEGIN
     UPDATE USUARIO SET NOMBRE = p_Nombre, CONTRASEÑA = p_Contraseña WHERE ID = p_ID;
@@ -47,4 +48,13 @@ BEGIN
     DELETE FROM USUARIO WHERE ID = p_ID;
 END //
 DELIMITER ;
-
+#------------------
+# ----- Loggin
+DELIMITER //
+CREATE PROCEDURE SP_Loggin(
+    IN p_Nombre VARCHAR(15)
+)
+BEGIN
+    SELECT ID, CONTRASEÑA FROM USUARIO WHERE NOMBRE = p_Nombre;
+END //
+DELIMITER ;
