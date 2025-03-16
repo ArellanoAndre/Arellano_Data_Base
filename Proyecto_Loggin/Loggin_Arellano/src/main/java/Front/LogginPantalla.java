@@ -76,6 +76,11 @@ public class LogginPantalla extends javax.swing.JFrame {
         Registrar.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
         Registrar.setForeground(new java.awt.Color(255, 255, 255));
         Registrar.setText("¿No tienes Cuenta? Registrate aquí");
+        Registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RegistrarMouseClicked(evt);
+            }
+        });
         getContentPane().add(Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 230, -1));
 
         Login_Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/login.jpg"))); // NOI18N
@@ -150,6 +155,11 @@ public class LogginPantalla extends javax.swing.JFrame {
                System.out.println("Iteracion Metodo Loggin!!");
 
     }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarMouseClicked
+        UsuarioNuevo UN = new UsuarioNuevo();
+        UN.setVisible(true);
+    }//GEN-LAST:event_RegistrarMouseClicked
 
     /**
      * @param args the command line arguments

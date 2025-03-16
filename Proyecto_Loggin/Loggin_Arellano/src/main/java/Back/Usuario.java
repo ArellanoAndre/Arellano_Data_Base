@@ -9,6 +9,14 @@ package Back;
  * @author Arell
  */
 public class Usuario {
+
+    public String getContraseña() {
+        return Contraseña;
+    }
+
+    public void setContraseña(String Contraseña) {
+        this.Contraseña = Contraseña;
+    }
     
     public String Nombre;
     public String Contraseña;
